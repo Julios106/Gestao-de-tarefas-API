@@ -5,8 +5,10 @@ const userDataBase = require("./src/config/db")
 const router = require('./src/routes/routes')
 const app = express()
 const helmet = require('helmet')
+const cors = require('cors')
 app.use(express.json())
 app.use(helmet())
+app.use(cors())
 
 //base de dados
 userDataBase()
