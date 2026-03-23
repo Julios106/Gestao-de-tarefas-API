@@ -1,0 +1,212 @@
+# API de Gestão de Usuários e Tarefas
+
+Uma API RESTful desenvolvida com Node.js para gerenciamento de usuários e tarefas, com autenticação baseada em JWT.
+
+---
+
+## Funcionalidades
+
+### Usuários (./src/controllers/constroller.js)
+
+* Registro de usuário
+* Login com autenticação JWT
+* Visualizar perfil
+* Atualizar dados
+* Atualizar senha
+* Deletar conta
+
+### Tarefas (./src/controllers/taskController.js)
+
+* Criar tarefa
+* Listar tarefas do usuário
+* Listar todas as tarefas
+* Atualizar tarefa
+* Deletar tarefa
+
+---
+
+## Tecnologias utilizadas
+
+* Node.js
+* Express
+* MongoDB
+* Mongoose
+* JWT (JSON Web Token)
+* bcrypt
+* Joi (validação)
+
+---
+
+## Estrutura do projeto
+
+```
+src/
+ ├── config/
+ ├── controllers/
+ ├── dtos/
+ ├── errors/ 
+ ├── models/
+ ├── routes/
+ ├── middlewares/
+ ├── validators/
+```
+
+---
+
+## Como rodar o projeto
+
+1. Clone o repositório:
+
+```
+git clone https://github.com/seu-usuario/seu-projeto.git
+```
+
+2. Instale as dependências:
+
+```
+npm install
+```
+
+3. Crie um arquivo `.env` na raiz do projeto:
+
+```
+PORT = 
+DATA_BASE =
+JWT_SECRET =
+```
+
+4. Inicie o servidor:
+
+```
+npm run dev
+```
+
+---
+
+## Autenticação
+
+A API utiliza autenticação com JWT.
+
+Para acessar rotas protegidas, envie o token no header:
+
+```
+Authorization: Bearer SEU_TOKEN
+```
+
+---
+
+## Rotas da API
+
+### Autenticação e Usuário
+
+#### Registrar usuário
+```
+POST /user/register
+```
+
+#### Login
+```
+POST /login
+```
+
+#### Ver perfil (protegida)
+```
+GET /perfil
+```
+
+#### Listar usuários
+```
+GET /listar
+```
+
+#### Atualizar dados do usuário (protegida)
+```
+PUT /user/atualizar
+```
+
+#### Atualizar senha (protegida)
+```
+PUT /user/atualizar-senha
+```
+
+#### Deletar usuário (protegida)
+```
+DELETE /user/delete
+```
+
+---
+
+### Tarefas
+
+#### Criar nova tarefa (protegida)
+```
+POST /nova-task
+```
+
+#### Listar tarefas do usuário (protegida)
+```
+GET /tarefas
+```
+
+#### Listar todas as tarefas
+```
+GET /listar-tarefas
+```
+
+#### Atualizar tarefa (protegida)
+```
+PUT /tarefa-atualizar/:id
+```
+
+#### Atualizar dados da tarefa (protegida)
+```
+PUT /tarefa-atualizar-dados/:id
+```
+
+#### Deletar tarefa (protegida)
+```
+DELETE /deletar-tarefa/:id
+```
+
+---
+
+## Exemplo de requisição
+
+### Login
+
+```
+POST /login
+```
+
+```json
+{
+  "email": "user@email.com",
+  "senha": "123456"
+}
+```
+
+---
+
+## Objetivo do projeto
+
+Este projeto foi desenvolvido com o objetivo de praticar:
+
+* Criação de APIs REST
+* Autenticação com JWT
+* Organização de código em camadas
+* Operações CRUD com MongoDB
+* Erros sentralizados num so arquivo usado classe
+
+---
+
+## Observações
+
+* Cada usuário só pode acessar suas próprias tarefas (rotas protegidas)
+* As senhas são armazenadas de forma segura utilizando hash
+* O sistema possui validação de dados na entrada(DTOs e JOI)
+
+---
+
+## Dificuldades passadas ao decorer do projeto
+
+* dar nome de variaveis foi um problema depois que o sistema comecou a ficar grande porque minha criatividade chegou a limite nesse quesito 😁
