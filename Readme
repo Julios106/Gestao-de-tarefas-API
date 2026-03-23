@@ -1,3 +1,4 @@
+
 # API de Gestão de Usuários e Tarefas
 
 Uma API RESTful desenvolvida com Node.js para gerenciamento de usuários e tarefas, com autenticação baseada em JWT.
@@ -210,3 +211,236 @@ Este projeto foi desenvolvido com o objetivo de praticar:
 ## Dificuldades passadas ao decorer do projeto
 
 * dar nome de variaveis foi um problema depois que o sistema comecou a ficar grande porque minha criatividade chegou a limite nesse quesito 😁
+
+
+
+
+
+---
+
+# User and Task Management API
+
+A RESTful API developed with Node.js for managing users and tasks, featuring JWT-based authentication.
+
+---
+
+## Features
+
+### Users (./src/controllers/controller.js)
+
+* User registration
+* Login with JWT authentication
+* View profile
+* Update user data
+* Update password
+* Delete account
+
+### Tasks (./src/controllers/taskController.js)
+
+* Create task
+* List tasks for a user
+* List all tasks
+* Update task
+* Delete task
+
+---
+
+## Technologies Used
+
+* Node.js
+* Express
+* MongoDB
+* Mongoose
+* JWT (JSON Web Token)
+* bcrypt
+* Joi (validation)
+
+---
+
+## Project Structure
+
+```
+src/
+ ├── config/
+ ├── controllers/
+ ├── dtos/
+ ├── errors/
+ ├── models/
+ ├── routes/
+ ├── middlewares/
+ ├── validators/
+```
+
+---
+
+## How to Run the Project
+
+1. Clone the repository:
+
+```
+git clone https://github.com/your-username/your-project.git
+```
+
+2. Install dependencies:
+
+```
+npm install
+```
+
+3. Create a `.env` file in the project root:
+
+```
+PORT=
+DATA_BASE=
+JWT_SECRET=
+```
+
+4. Start the server:
+
+```
+npm run dev
+```
+
+---
+
+## Authentication
+
+The API uses JWT authentication.
+
+To access protected routes, send the token in the header:
+
+```
+Authorization: Bearer YOUR_TOKEN
+```
+
+---
+
+## API Routes
+
+### Authentication and User
+
+#### Register User
+
+```
+POST /user/register
+```
+
+#### Login
+
+```
+POST /login
+```
+
+#### View Profile (protected)
+
+```
+GET /perfil
+```
+
+#### List Users
+
+```
+GET /listar
+```
+
+#### Update User Data (protected)
+
+```
+PUT /user/atualizar
+```
+
+#### Update Password (protected)
+
+```
+PUT /user/atualizar-senha
+```
+
+#### Delete User (protected)
+
+```
+DELETE /user/delete
+```
+
+---
+
+### Tasks
+
+#### Create New Task (protected)
+
+```
+POST /nova-task
+```
+
+#### List User's Tasks (protected)
+
+```
+GET /tarefas
+```
+
+#### List All Tasks
+
+```
+GET /listar-tarefas
+```
+
+#### Update Task (protected)
+
+```
+PUT /tarefa-atualizar/:id
+```
+
+#### Update Task Data (protected)
+
+```
+PUT /tarefa-atualizar-dados/:id
+```
+
+#### Delete Task (protected)
+
+```
+DELETE /deletar-tarefa/:id
+```
+
+---
+
+## Request Example
+
+### Login
+
+```
+POST /login
+```
+
+```json
+{
+  "email": "user@email.com",
+  "senha": "123456"
+}
+```
+
+---
+
+## Project Objective
+
+This project was developed to practice:
+
+* Creating RESTful APIs
+* JWT authentication
+* Layered code organization
+* CRUD operations with MongoDB
+* Centralized error handling using a dedicated class
+
+---
+
+## Notes
+
+* Each user can only access their own tasks (protected routes)
+* Passwords are securely stored using hashing
+* The system includes input validation using DTOs and Joi
+
+---
+
+## Challenges Faced During Development
+
+* Naming variables became challenging as the system grew because my creativity reached its limit 😁
+
