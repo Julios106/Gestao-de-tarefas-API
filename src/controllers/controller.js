@@ -87,9 +87,9 @@ const login = async(req,res,next)=>{
 
 const perfil = async(req,res,next)=>{
     try{
-
+        const total = await task.countDocuments({userId:req.User.id})
         const perfilTask = await task.find({userId:req.User.id})
-        const total = await task.countDocuments(perfilTask)
+
 
         if(!perfilTask){
             return res.status(200).json({

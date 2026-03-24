@@ -6,6 +6,7 @@ const router = require('./src/routes/routes')
 const app = express()
 const helmet = require('helmet')
 const cors = require('cors')
+const { swaggerUi, swaggerDocument } = require("./swagger");
 app.use(express.json())
 app.use(helmet())
 app.use(cors())
@@ -13,6 +14,7 @@ app.use(cors())
 //base de dados
 userDataBase()
 
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
 app.use('/api',router)

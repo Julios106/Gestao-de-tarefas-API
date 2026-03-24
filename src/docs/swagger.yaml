@@ -1,0 +1,170 @@
+openapi: 3.0.0
+info:
+  title: API de Tarefas
+  version: 1.0.0
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+
+  /api/user/register:
+    post:
+      tags:
+        - User
+      summary: Registar novo user 
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - nome
+                - email
+                - senha
+              properties:
+                nome:
+                  type: string
+                  example: Carlos
+                email:
+                  type: string
+                  example: carlos@gmail.com
+                senha:
+                  type: string
+                  example: 123456       
+      responses:
+        200:
+          description: Sucesso
+
+  /api/login:
+    post:
+      tags:
+        - User
+      summary: Login do usuário
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - senha
+              properties:
+                email:
+                  type: string
+                  example: carlos@gmail.com
+                senha:
+                  type: string
+                  example: 123456       
+      responses:
+        200:
+          description: Login feito
+
+  /api/perfil:
+    get:
+      tags:
+        - User
+      summary: Perfil do user
+      security:
+        - bearerAuth: []      
+      responses:
+        200:
+          description: Login feito
+
+
+
+
+  /api/listar:
+    get:
+      tags:
+        - User
+      summary: Listar Users
+      responses:
+        200:
+          description: Sucesso
+
+
+  /api/user/atualizar:
+    put:
+      tags:
+        - User
+      summary: Atualizar User 
+      security:
+        - bearerAuth: []      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nome:
+                  type: string
+                  example: Carlos
+                email:
+                  type: string
+                  example: carlitos@gmail.com       
+      responses:
+        200:
+          description: Sucesso
+
+
+  /api/user/atualizar-senha:
+    put:
+      tags:
+        - User
+      summary: Atualizar senha
+      security:
+      - bearerAuth: []    
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - senha_antiga
+                - nova_senha
+              properties:
+                email:
+                  type: string
+                  example: Carlitos@gmail.com
+                senha_antiga:
+                  type: string
+                  example: tua_senha_antiga
+                nova_senha: 
+                  type: string
+                  example: tua_senha_nova                       
+      responses:
+        200:
+          description: Sucesso
+          
+  /api/user/delete:
+    delete:
+      tags:
+        - User
+      summary: Deletar user e as respectivas tarefas
+      security:
+      - bearerAuth: []    
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - senha
+              properties:
+                senha:
+                  type: string
+                  example: sua_senha                     
+      responses:
+        200:
+          description: Sucesso          
