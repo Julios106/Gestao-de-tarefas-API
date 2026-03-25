@@ -84,7 +84,7 @@ paths:
     get:
       tags:
         - User
-      summary: Listar Users
+      summary: Listar todos os Users do DB
       responses:
         200:
           description: Sucesso
@@ -168,3 +168,132 @@ paths:
       responses:
         200:
           description: Sucesso          
+
+
+  /api/nova-task:
+    post:
+      tags:
+        - Task
+      summary: Adicionar Tarefas
+      security:
+      - bearerAuth: []    
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - titulo
+                - descricao
+              properties:
+                titulo:
+                  type: string
+                  example: seu_titulo
+                descricao:
+                  type: string
+                  example: sua_descricao                       
+      responses:
+        200:
+          description: Sucesso              
+
+
+  /api/user/tarefas:
+    get:
+      tags:
+        - Task
+      summary: Mostrar Tarefas ao User
+      security:
+      - bearerAuth: []                         
+      responses:
+        200:
+          description: Sucesso              
+
+
+  /api/listar-tarefas:
+    get:
+      tags:
+        - Task
+      summary: Listar todas tarefas do DB
+      security:
+      - bearerAuth: []                         
+      responses:
+        200:
+          description: Sucesso 
+
+  /api/tarefa-atualizar/{id}:
+    put:
+      tags:
+        - Task
+      summary: Alternar status da tarefa (pendente/feito)
+      security:
+      - bearerAuth: []        
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID da tarefa
+          schema:
+            type: string
+      responses:
+        200:
+          description: Status alterado com sucesso          
+
+
+  /api/tarefa-atualizar-dados/{id}:
+    put:
+      tags:
+        - Task
+      summary: Atualizar dados da tarefa
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID da tarefa
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                titulo:
+                  type: string
+                  example: Estudar Node
+                descricao:
+                  type: string
+                  example: Estudar Swagger
+                status:
+                  type: string
+                  enum: [pendente, feito]
+                  example: pendente
+      responses:
+        200:
+          description: Tarefa atualizada com sucesso
+
+
+
+
+
+
+  /api/deletar-tarefa/{id}:
+    delete:
+      tags:
+        - Task
+      summary: Deletar tarefa (tem que estar logado)
+      security:
+      - bearerAuth: []        
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID da tarefa
+          schema:
+            type: string
+      responses:
+        200:
+          description: Tarefa deletada com sucesso     

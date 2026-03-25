@@ -22,7 +22,7 @@ router.delete('/user/delete',autenticar,controller.deletarUser)
 
 //parte de tarefas...
 router.post('/nova-task',autenticar,taskController.addTask)
-router.get('/tarefas',autenticar,taskController.mostrarTask)
+router.get('/user/tarefas',autenticar,taskController.mostrarTask)
 router.get('/listar-tarefas',taskController.listar_tarefas)
 
 //atualizar tarefa
