@@ -33,7 +33,7 @@ const autenticar = async (req,res,next)=>{
 
 
     }catch(erro){
-        next(erro)
+        return res.status(401).json({message:"token expirado"})
     }
 
 }

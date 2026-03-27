@@ -26,7 +26,7 @@ router.get('/user/tarefas',autenticar,taskController.mostrarTask)
 router.get('/listar-tarefas',taskController.listar_tarefas)
 
 //atualizar tarefa
-router.put('/tarefa-atualizar/:id',autenticar,taskController.atualizarTask)
+router.put('/tarefa-atualizar/:id',autenticar,taskController.atualizarTask)//atualizar pendente/feito
 router.put('/tarefa-atualizar-dados/:id',autenticar,taskController.atualiarDadosTask )
 
 //deletar tarefas
